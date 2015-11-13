@@ -1,0 +1,20 @@
+post-commit: Python hook used for SVN post commits
+
+This script is set to publish information to Slack when SVN commits occur. 
+
+Required files/Application/services:
+    * Subversion: http://subversion.tigris.org/
+    * Working repository (you're on your own here)
+    * Slack Domain and room
+
+The user MUST edit the script file to add in
+    * Slack API
+    * Slack room name
+    * a user name for display in Slack
+    * location of svnlook command.
+    * Edit revision_number.txt to latest revision if SVN repository isn't new to avoid a message being posted for every
+      commit ever made.
+
+I advice that you set this up with cron. When the program is run it will do 10 checks for new commits and then end. Set this up with cron to 
+startup and run every 60 minutes or so and it will do all the work automatically.
+
