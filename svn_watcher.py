@@ -44,8 +44,8 @@ def slack_bot( msg ):
     response = requests.post(url, data=json.dumps(payload))
     print("An update has been posted to Slack.")
   except:
-    pass
-  
+    print("Error posting message to slack. Please check your details and try again.")
+    
 def runLook( *args ):
   # check_output will except if it fails so we don't spam the room with 'run svnlook help for help' messages
   return subprocess.check_output( ' '.join([LOOK] + list(args)), shell=True, stderr=subprocess.STDOUT)
@@ -56,31 +56,27 @@ def getCommitInfo( repo, revision ):
   files = runLook("changed", repo, "-r", revision)
 
   chatMsg = ("""
-[%s] %s committed revision %s
-%s
-Changed Files:
-%s
-""" % (repo, author.rstrip(), revision, comment, files)).strip()
+    [%s] %s committed revision %s
+    %s
+    Changed Files:
+    %s
+    """ % (repo, author.rstrip(), revision, comment, files)).strip()
   
   return chatMsg
 
 def GetRevision():
-  #This will do 10 checks for new commits. The repository path needs setting here.
-  times_to_execute = 10
-  i = 0
-  while i < times_to_execute:
-    with open("revision_number.txt", "r+") as revision:
-      current_revision = int(revision.readline())
-    try:
-      chatMsg = getCommitInfo('//path to repository/', str(current_revision + 1))
-      print(chatMsg)
-      with open("revision_number.txt", "w") as revision:
-  	    revision.write(str(int(current_revision+1)))
-  	    revision.close()
-    except:
-      print("There has been no new commit made.")
-    i = i + 1
-    time.sleep(5)
+  #This will check for a new commit. The repository path needs setting here.
+  with open("revision_number.txt", "r+") as revision:
+    current_revision = int(revision.readline())
+  try:
+    chatMsg = getCommitInfo('//path to repository/', str(current_revision + 1))
+    print(chatMsg)
+    with open("revision_number.txt", "w") as revision:
+      revision.write(str(int(current_revision+1)))
+      revision.close()
+  except:
+    print("No commits since last check.")
+  
   exit()
 
 if __name__ == "__main__":
