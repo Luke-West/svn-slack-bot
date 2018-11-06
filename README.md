@@ -14,7 +14,7 @@ Required files/Application/services:
 - Working repository
 - Slack Domain and room
 
-The user MUST edit the script file to add in:
+The user MUST edit svn_watcher.py file to add in:
 - Slack API
 - Slack room name
 - a username to display in Slack
