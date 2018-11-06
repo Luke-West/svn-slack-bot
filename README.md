@@ -14,10 +14,10 @@ Required files/Application/services:
 - Working repository
 - Slack Domain and room
 
-The user MUST edit the script file to add in
+The user MUST edit the script file to add in:
 - Slack API
 - Slack room name
-- a user name to display in Slack
+- a username to display in Slack
 - location of svnlook command.
 - Edit revision_number.txt to latest revision if SVN repository isn't new to avoid a message being posted for every
       commit ever made.
