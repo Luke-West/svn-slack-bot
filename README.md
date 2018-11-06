@@ -1,7 +1,7 @@
 # This project is no longer supported
 
 I created this script years ago (in my days of being an apprentice). It's not updated anymore and if you choose to use it, 
-you're on your own. It's a fairly simply script and anyone of novice level or above should be able to work out how to use it.
+you're on your own. It's a simple script and anyone of novice level or above should be able to work out how to use it.
 
 -----------------
 
