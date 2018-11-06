@@ -4,7 +4,7 @@ This script is set to publish information to Slack when SVN commits occur.
 
 Required files/Application/services:
     * Subversion: http://subversion.tigris.org/
-    * Working repository (you're on your own here)
+    * Working repository
     * Slack Domain and room
 
 The user MUST edit the script file to add in
